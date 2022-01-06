@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/main_container"
-        android:name="com.homebase.codechallenge.Schedules.SchedulesFragment"
+        android:name="com.homebase.codechallenge.schedules.view.fragment.SchedulesFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

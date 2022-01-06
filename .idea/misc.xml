@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35778985507246375" />
         <entry key="app/src/main/res/layout/fragment_schedules.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/shift_item.xml" value="0.45" />
       </map>
     </option>
   </component>
