@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import com.homebase.codechallenge.R
 import com.homebase.codechallenge.databinding.FragmentSchedulesBinding
+import com.homebase.codechallenge.extension.clear
+import com.homebase.codechallenge.schedules.view.adapter.LoadingAdapter
 import com.homebase.codechallenge.schedules.view.adapter.ShiftItem
 import com.homebase.codechallenge.schedules.view.viewstate.SchedulesFragmentViewState
 import com.homebase.codechallenge.schedules.viewmodel.SchedulesViewModel
@@ -48,18 +51,19 @@ class SchedulesFragment : Fragment() {
         vm.schedulesData.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is State.Loading -> {
-                    Timber.d("Gabino Loading...")
+                    binding.viewState?.adapter?.clear()
+                    binding.viewState?.adapter?.addAdapter(LoadingAdapter())
                 }
                 is State.Success -> {
-                    Timber.d("Gabino SUCCESS!!!!!!!!!")
+                    //Get Data from response
                     val shiftsWrapper: Shifts = response.getData()
                     val shifts = shiftsWrapper.shifts
-                    shifts.forEach {
-                        Timber.d("Gabino -> ${it.name}")
-                        binding.viewState?.adapter?.addAdapter(ShiftItem(it))
-                    }
+
+                    //Render data on screen
+                    binding.viewState?.adapter?.clear()
+                    shifts.forEach { binding.viewState?.adapter?.addAdapter(ShiftItem(it)) }
                 }
-                is State.Error -> Timber.d("Gabino FUCK ERROR!!!! ${response.error}")
+                is State.Error -> Toast.makeText(context, getString(R.string.error_generic), Toast.LENGTH_SHORT).show()
             }
         })
     }

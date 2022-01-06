@@ -13,21 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:clickable="true"
-        app:cardCornerRadius="5dp"
         android:elevation="2dp"
         android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Anna" />
@@ -35,12 +36,33 @@
             <TextView
                 android:id="@+id/role"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:textSize="24sp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/name"
                 app:layout_constraintStart_toEndOf="@id/name"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@id/name"
                 tools:text="(Waitress)" />
+
+            <TextView
+                android:id="@+id/shift"
+                android:layout_marginTop="5dp"
+                tools:text="Fri, Apr. 12 9-2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                android:textStyle="bold"
+                />
+
+            <ImageView
+                android:id="@+id/color"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@drawable/bg_red" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

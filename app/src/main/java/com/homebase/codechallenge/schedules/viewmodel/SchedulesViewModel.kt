@@ -6,6 +6,7 @@ import com.homebase.core.base.BaseViewModel
 import com.homebase.core.base.State
 import com.homebase.core.service.schedules.ScheduleService
 import com.homebase.core.service.NetworkState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SchedulesViewModel : BaseViewModel() {
@@ -18,6 +19,9 @@ class SchedulesViewModel : BaseViewModel() {
         _schedulesData.value = State.Loading
 
         vmScope.launch {
+
+            delay(3000)
+
             when (val networkResponse = service.getSchedules()) {
                 is NetworkState.Success -> _schedulesData.postValue(State.Success(networkResponse.data))
                 is NetworkState.Error -> _schedulesData.postValue(State.Error(networkResponse.error ?: ""))
