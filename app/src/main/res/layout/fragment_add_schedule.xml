@@ -6,7 +6,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".createschedule.AddScheduleFragment">
+        tools:context=".createschedule.view.AddScheduleFragment">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="back"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
 
         <TextView
             android:id="@+id/title"
@@ -27,10 +41,10 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/save_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintBottom_toTopOf="@id/save_card">
+            app:layout_constraintTop_toBottomOf="@id/title">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/start_date_card"
@@ -47,9 +61,9 @@
                     android:id="@+id/start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="@string/form_start_date"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_clipboard_text_clock" />
@@ -71,9 +85,9 @@
                     android:id="@+id/end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="@string/form_end_date"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_clipboard_text_clock" />
@@ -84,10 +98,10 @@
                 android:id="@+id/employee_card"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:elevation="2dp"
-                android:layout_gravity="center"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="5dp">
@@ -96,8 +110,8 @@
                     android:id="@+id/employee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="@string/form_employee"
                     android:textStyle="bold"
@@ -109,10 +123,10 @@
                 android:id="@+id/role_card"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:elevation="2dp"
-                android:layout_gravity="center"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="5dp">
@@ -121,8 +135,8 @@
                     android:id="@+id/role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="@string/form_role"
                     android:textStyle="bold"
@@ -145,8 +159,8 @@
                     android:id="@+id/color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="@string/form_color"
                     android:textStyle="bold"
@@ -173,13 +187,13 @@
 
             <TextView
                 android:id="@+id/save"
-                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:text="@string/save_btn"/>
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="@string/save_btn"
+                android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 

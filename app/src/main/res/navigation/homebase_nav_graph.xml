@@ -15,6 +15,6 @@
 
     <fragment
         android:id="@+id/addScheduleFragment"
-        android:name="com.homebase.codechallenge.createschedule.AddScheduleFragment"
+        android:name="com.homebase.codechallenge.createschedule.view.AddScheduleFragment"
         android:label="AddScheduleFragment" />
 </navigation>

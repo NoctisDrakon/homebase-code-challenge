@@ -1,8 +1,7 @@
-package com.homebase.codechallenge.createschedule
+package com.homebase.codechallenge.createschedule.view
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -157,6 +156,10 @@ class AddScheduleFragment : Fragment() {
                 saveShiftAndClose()
             else
                 Toast.makeText(requireContext(), R.string.error_invalid_shift, Toast.LENGTH_SHORT).show()
+        }
+
+        binding.back.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
