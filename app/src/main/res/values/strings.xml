@@ -2,4 +2,34 @@
     <string name="app_name">HomeBase</string>
     <string name="role_format">(%1$s)</string>
     <string name="error_generic">An unknown error has occurred. Please try again!</string>
+    <string name="header_title">HomeBase Schedule List</string>
+    <string name="add_shift_title">Create new shift entry</string>
+    <string name="form_start_date">Select start date</string>
+    <string name="form_end_date">Select end date</string>
+    <string name="form_employee">Select employee</string>
+    <string name="form_color">Select shift color</string>
+    <string name="save_btn">Save</string>
+    <string name="error_invalid_shift">Please fill all options first</string>
+    <string name="form_role">Select Role</string>
+    <string name="add_shift_success">Shift saved!</string>
+
+    <array name="employees">
+        <item>Anna</item>
+        <item>Anton</item>
+        <item>Eugene</item>
+        <item>Keyvan</item>
+    </array>
+
+    <array name="colors">
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Red</item>
+    </array>
+
+    <array name="roles">
+        <item>Waiter</item>
+        <item>Prep</item>
+        <item>Front of House</item>
+        <item>Cook</item>
+    </array>
 </resources>

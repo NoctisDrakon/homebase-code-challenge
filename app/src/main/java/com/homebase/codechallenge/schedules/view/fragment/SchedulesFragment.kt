@@ -8,17 +8,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ConcatAdapter
+import androidx.navigation.fragment.findNavController
 import com.homebase.codechallenge.R
 import com.homebase.codechallenge.databinding.FragmentSchedulesBinding
 import com.homebase.codechallenge.extension.clear
+import com.homebase.codechallenge.schedules.view.adapter.HeaderAdapter
 import com.homebase.codechallenge.schedules.view.adapter.LoadingAdapter
 import com.homebase.codechallenge.schedules.view.adapter.ShiftItem
+import com.homebase.codechallenge.schedules.view.listener.AddScheduleListener
 import com.homebase.codechallenge.schedules.view.viewstate.SchedulesFragmentViewState
 import com.homebase.codechallenge.schedules.viewmodel.SchedulesViewModel
 import com.homebase.core.base.State
-import com.homebase.core.service.schedules.model.Shifts
-import timber.log.Timber
+import com.homebase.core.service.schedules.model.Shift
 
 class SchedulesFragment : Fragment() {
 
@@ -27,7 +28,8 @@ class SchedulesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm = ViewModelProvider(this).get(SchedulesViewModel::class.java)
+        vm = ViewModelProvider(requireActivity()).get(SchedulesViewModel::class.java)
+        vm.getSchedules()
     }
 
     override fun onCreateView(
@@ -44,7 +46,6 @@ class SchedulesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        vm.getSchedules()
     }
 
     private fun observeViewModel() {
@@ -55,17 +56,24 @@ class SchedulesFragment : Fragment() {
                     binding.viewState?.adapter?.addAdapter(LoadingAdapter())
                 }
                 is State.Success -> {
+                    //Clear Previous Data From Adapter
+                    binding.viewState?.adapter?.clear()
+
                     //Get Data from response
-                    val shiftsWrapper: Shifts = response.getData()
-                    val shifts = shiftsWrapper.shifts
+                    val shifts = response.getData<List<Shift>>()
+
+                    //Add Header
+                    binding.viewState?.adapter?.addAdapter(HeaderAdapter(object : AddScheduleListener {
+                        override fun onAddScheduleClicked() {
+                            findNavController().navigate(R.id.action_schedulesFragment_to_addScheduleFragment)
+                        }
+                    }))
 
                     //Render data on screen
-                    binding.viewState?.adapter?.clear()
                     shifts.forEach { binding.viewState?.adapter?.addAdapter(ShiftItem(it)) }
                 }
                 is State.Error -> Toast.makeText(context, getString(R.string.error_generic), Toast.LENGTH_SHORT).show()
             }
         })
     }
-
 }

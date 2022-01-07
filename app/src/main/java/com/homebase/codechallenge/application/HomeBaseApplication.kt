@@ -1,6 +1,7 @@
-package com.homebase.codechallenge
+package com.homebase.codechallenge.application
 
 import androidx.multidex.MultiDexApplication
+import com.homebase.codechallenge.BuildConfig
 import timber.log.Timber
 
 class HomeBaseApplication : MultiDexApplication() {
@@ -11,5 +12,4 @@ class HomeBaseApplication : MultiDexApplication() {
             Timber.plant(Timber.DebugTree())
         }
     }
-
 }
