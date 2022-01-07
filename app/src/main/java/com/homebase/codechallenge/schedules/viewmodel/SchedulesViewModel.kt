@@ -24,7 +24,7 @@ class SchedulesViewModel : BaseViewModel() {
 
         vmScope.launch {
 
-            delay(3000) //So we can see the loading animation :)
+            delay(2000) //So we can see the loading animation :)
 
             when (val networkResponse = service.getSchedules()) {
                 is NetworkState.Success -> {
